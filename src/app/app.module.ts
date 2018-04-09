@@ -5,8 +5,11 @@ import { UpgradeModule } from '@angular/upgrade/bundles/upgrade-static.umd.js';
 import { HybridHelper } from './hybrid-helper.interface.v4';
 import { AppComponent } from './app.component';
 import { DocumentsService } from './documents-service.v4';
+import { DocumentStarsDirective } from './documents-directive.v4';
 
-
+const myDirectives = [
+  DocumentStarsDirective
+];
 
 
 @NgModule({
@@ -15,7 +18,8 @@ import { DocumentsService } from './documents-service.v4';
   ],
   declarations: [
     AppComponent,
-    DocumentsService
+    DocumentsService,
+    myDirectives
   ],
   imports: [
     BrowserModule,

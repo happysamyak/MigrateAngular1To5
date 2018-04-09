@@ -2,9 +2,9 @@
 
     "use strict";
 
-    angular.module('myApp', []);
+    //angular.module('myApp', []);
 
-    var app = angular.module('myApp');
+    var app = angular.module('myApp', []);
     //app.factory('DocumentsService', downgradeInjectable(DocumentsService) as any);
 
     app.service('ng1Service1', ng1Service1);
@@ -41,6 +41,7 @@
             console.log('THIS IS SERVICE 2');
             console.log('THIS IS A RESULT OF CALLING SERVICE 1' + ng1Service1.testNG1Service1Function());
             console.log('result from v1 service calling v4 DocumentsService',DocumentsService.v4Name);
+            return "upgrade from Angular 1 - 5";
         }
 
         return {
@@ -48,6 +49,28 @@
         }
 
     }
+
+    //app.directive("documentStars", documentStars);
+
+    function documentStars() {
+        console.log("this call is for angular 1 directive");
+    }
+    app.directive("documentStars",['$compile', function($compile) {
+        return {
+            restrict: "E",
+            replace: true,
+            transclude: true,
+            scope: {
+                model: "="
+            },
+            link: function(scope, element, attrs) {
+                var x = "<p> this is angular 1 directive called on angular 5<p>";
+                x = angular.element(x);
+                element.append(x);
+                $compile(x)(scope);
+            }
+        };
+    }]);
 
 
 })();

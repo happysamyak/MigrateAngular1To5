@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
 selector: 'my-app',
-templateUrl: './app.component.html'
+template: '<p>hi</p>'
 })
 
 @Injectable()
